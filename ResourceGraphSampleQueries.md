@@ -6,7 +6,7 @@ Login using "Login-AzAccount" and simply copy/paste the query.
 If you prefer to query a single subscription, al you need to do so add the "-subscription" parameter to the Search-AzGraph command
 like Search-AzGraph -subscription "<SUBSCRIPTIONID>" -Query "distinct(tenantId), subscriptionId"
 
-## General Information
+## Basic Information
 Get delegated Tenants + Subscriptions
 
 ```azurepowershell-interactive

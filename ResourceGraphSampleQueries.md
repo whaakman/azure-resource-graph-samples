@@ -1,4 +1,5 @@
 ## Example Azure Resource Graph queries
+Guiding article for dashboards here: https://www.wesleyhaakman.org/azure-lighthouse-resource-graph-dashboards/
 
 ## Usage
 Login using "Login-AzAccount" and simply copy/paste the query. 

@@ -71,7 +71,7 @@ App Service plans count by Web Apps
 
 ```
 Search-AzGraph -Query "extend NumberOfApps = aliases['Microsoft.Web/serverFarms/numberOfSites'] 
-|where type=~'Microsoft.Web/serverfarms'
+| where type=~'Microsoft.Web/serverfarms'
 | project Name=['name'], NumberOfApps, Location=['location']"
 ```
 
@@ -81,9 +81,10 @@ VMs overview
 
 ```
 Search-AzGraph -Query "extend OS = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType'] 
-| extend SKU = aliases['Microsoft.Compute/virtualMachines/sku.name'] 
-| extend OSSpecific = aliases['Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer'] 
-| extend Version = aliases['Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku'] 
+| extend 
+SKU = aliases['Microsoft.Compute/virtualMachines/sku.name'],
+OSSpecific = aliases['Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer'],
+Version = aliases['Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku'] 
 | where type =~ 'Microsoft.Compute/VirtualMachines' 
 | project name, OS, OSSpecific, Version, SKU, Location=['location'], Subscription=['subscriptionId']" |ft
 ```
@@ -173,9 +174,10 @@ Storage Accounts overview
 
 ```
 Search-AzGraph -Query "extend HTTPSOnly = aliases['Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly'] 
-| extend Type = aliases['Microsoft.Storage/storageAccounts/accountType'] 
-| extend BlobEncryption = aliases['Microsoft.Storage/storageAccounts/enableBlobEncryption'] 
-| extend FileEncryption = aliases['Microsoft.Storage/storageAccounts/enableFileEncryption'] 
+| extend 
+Type = aliases['Microsoft.Storage/storageAccounts/accountType'], 
+BlobEncryption = aliases['Microsoft.Storage/storageAccounts/enableBlobEncryption'],
+FileEncryption = aliases['Microsoft.Storage/storageAccounts/enableFileEncryption']
 | where type =~ 'microsoft.storage/storageaccounts'
 | project Name=['name'], Kind=['kind'], Type, HTTPSOnly, BlobEncryption, FileEncryption, Location=['location']" 
 |ft

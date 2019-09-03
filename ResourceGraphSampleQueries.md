@@ -2,6 +2,7 @@
 Guiding article for dashboards here: https://www.wesleyhaakman.org/azure-lighthouse-resource-graph-dashboards/
 
 ## Usage
+Make sure the Az.ResourceGraph module is installed (Install-Module -Name Az.ResourceGraph)
 Login using "Login-AzAccount" and simply copy/paste the query. 
 
 If you prefer to query a single subscription, al you need to do so add the "-subscription" parameter to the Search-AzGraph command

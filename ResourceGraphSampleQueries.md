@@ -180,6 +180,6 @@ Type = aliases['Microsoft.Storage/storageAccounts/accountType'],
 BlobEncryption = aliases['Microsoft.Storage/storageAccounts/enableBlobEncryption'],
 FileEncryption = aliases['Microsoft.Storage/storageAccounts/enableFileEncryption']
 | where type =~ 'microsoft.storage/storageaccounts'
-| project Name=['name'], Kind=['kind'], Type, HTTPSOnly, BlobEncryption, FileEncryption, Location=['location']" 
+| project Name=['name'], Kind=['kind'], Type, HTTPSOnly, BlobEncryption, FileEncryption, Location=['location'], SubscriptionID=['subscriptionId']" 
 |ft
 ```

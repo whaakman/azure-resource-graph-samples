@@ -117,6 +117,25 @@ Search-AzGraph -Query "extend sku = aliases['Microsoft.Compute/virtualMachines/s
 | project sku, total=count_"
 ```
 
+Disks with illogical sizes
+
+```
+Search-AzGraph -Query "where type == 'microsoft.compute/disks'
+| where properties.diskSizeGB > 128 
+       or properties.diskSizeGB < 126
+| where properties.diskSizeGB > 256 
+       or properties.diskSizeGB < 250
+| where properties.diskSizeGB > 512
+      or properties.diskSizeGB < 490
+| where properties.diskSizeGB > 1024 
+       or properties.diskSizeGB < 1000  
+| where properties.diskSizeGB > 2048
+      or properties.diskSizeGB < 2030
+| where properties.diskSizeGB > 4096
+      or properties.diskSizeGB < 4090
+| project Name=name, Size=properties.diskSizeGB, ResourceGroup=resourceGroup, Subscription=subscriptionId" 
+```
+
 ## SQL Databases 
 
 PaaS SQL Databases count by type
